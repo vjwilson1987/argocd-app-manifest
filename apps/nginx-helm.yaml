@@ -11,9 +11,14 @@ spec:
     name: in-cluster
   project: default
   source:
-    path : nginx-helm-dir
+    path : .
     repoURL: https://github.com/vjwilson1987/nginx-helm.git
     targetRevision: HEAD
+    plugin:
+      env:
+      - name: HELMFILE_GLOBAL_OPTIONS
+        value: --file helmfile.yaml  
+      name: helmfile
   syncPolicy:
     syncOptions:
     - CreateNamespace=true
